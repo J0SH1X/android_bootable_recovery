@@ -1470,7 +1470,7 @@ Value* WipeBlockDeviceFn(const char* name, State* state, int argc, Expr* argv[])
 
     size_t len = strtoull(len_str, NULL, 0);
     int fd = open(filename, O_WRONLY, 0644);
-    int success = wipe_block_device(fd, len);
+    int success = 1; //wipe_block_device(fd, len);
 
     free(filename);
     free(len_str);

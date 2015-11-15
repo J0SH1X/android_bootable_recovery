@@ -408,7 +408,8 @@ include $(commands_recovery_local_path)/injecttwrp/Android.mk \
     $(commands_recovery_local_path)/dosfstools/Android.mk \
     $(commands_recovery_local_path)/etc/Android.mk \
     $(commands_recovery_local_path)/toolboxes/Android.mk \
-    $(commands_recovery_local_path)/libpixelflinger/Android.mk
+    $(commands_recovery_local_path)/libpixelflinger/Android.mk \
+    $(commands_recovery_local_path)/lz4/Android.mk
 
 ifeq ($(TW_INCLUDE_CRYPTO), true)
     include $(commands_recovery_local_path)/crypto/lollipop/Android.mk

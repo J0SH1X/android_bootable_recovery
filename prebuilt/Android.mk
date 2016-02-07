@@ -188,7 +188,7 @@ ifneq ($(TW_EXCLUDE_ENCRYPTED_BACKUPS), true)
     RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libopenaes.so
 endif
 ifeq ($(TARGET_USERIMAGES_USE_F2FS), true)
-    ifeq ($(shell test $(CM_PLATFORM_SDK_VERSION) -ge 4; echo $$?),0)
+    ifneq (EV_BUILD,)
         RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/mkfs.f2fs
         RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libf2fs.so
     else ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 23; echo $$?),0)

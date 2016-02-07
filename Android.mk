@@ -446,8 +446,8 @@ ifneq ($(TARGET_RECOVERY_DEVICE_MODULES),)
 endif
 LOCAL_CFLAGS += -DTWRES=\"$(TWRES_PATH)\"
 LOCAL_CFLAGS += -DTWHTCD_PATH=\"$(TWHTCD_PATH)\"
-ifeq ($(TW_INCLUDE_NTFS_3G),true)
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 22; echo $$?),0)
+ifneq (EV_BUILD,)
     LOCAL_ADDITIONAL_DEPENDENCIES += \
         mount.ntfs \
         fsck.ntfs \
@@ -460,7 +460,7 @@ else
 endif
 endif
 ifeq ($(TARGET_USERIMAGES_USE_F2FS), true)
-ifeq ($(shell test $(CM_PLATFORM_SDK_VERSION) -ge 3; echo $$?),0)
+ifneq (EV_BUILD,)
     LOCAL_ADDITIONAL_DEPENDENCIES += \
         fsck.f2fs \
         mkfs.f2fs

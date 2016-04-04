@@ -198,7 +198,7 @@ LOCAL_SHARED_LIBRARIES += libcutils
 
 ifneq (,$(filter $(PLATFORM_SDK_VERSION), 21 22))
     ifeq ($(TW_USE_TOOLBOX), true)
-        LOCAL_SHARED_LIBRARIES += libcrypto
+        LOCAL_SHARED_LIBRARIES += libcrypto libcrypto_utils
     endif
 else
     LOCAL_SHARED_LIBRARIES += \

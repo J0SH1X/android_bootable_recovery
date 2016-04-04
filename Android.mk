@@ -126,7 +126,7 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
     LOCAL_C_INCLUDES += $(LOCAL_PATH)/libmincrypt/includes
     LOCAL_CFLAGS += -DUSE_OLD_VERIFIER
 else
-    LOCAL_SHARED_LIBRARIES += libc++ libcrypto
+    LOCAL_SHARED_LIBRARIES += libc++ libcrypto_utils libcrypto
 endif
 
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 24; echo $$?),0)
@@ -560,7 +560,7 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
     LOCAL_SHARED_LIBRARIES += libmincrypttwrp
     LOCAL_CFLAGS += -DUSE_MINCRYPT
 else
-    LOCAL_SHARED_LIBRARIES += libcrypto
+    LOCAL_SHARED_LIBRARIES += libcrypto_utils libcrypto
 endif
 include $(BUILD_SHARED_LIBRARY)
 
@@ -585,7 +585,7 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
     LOCAL_SRC_FILES += verifier24/verifier.cpp
     LOCAL_CFLAGS += -DUSE_OLD_VERIFIER
 else
-    LOCAL_SHARED_LIBRARIES += libcrypto
+    LOCAL_SHARED_LIBRARIES += libcrypto_utils libcrypto
     LOCAL_SRC_FILES += verifier.cpp
 endif
 
@@ -605,7 +605,7 @@ LOCAL_SRC_FILES := \
     verifier.cpp \
     ui.cpp
 LOCAL_C_INCLUDES := system/core/fs_mgr/include
-LOCAL_STATIC_LIBRARIES := libcrypto
+LOCAL_STATIC_LIBRARIES := libcrypto_utils_static libcrypto_static
 include $(BUILD_STATIC_LIBRARY)
 
 commands_recovery_local_path := $(LOCAL_PATH)

@@ -183,6 +183,8 @@ endif
 
 ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
+    LOCAL_SHARED_LIBRARIES += libhardware
+    LOCAL_ADDITIONAL_DEPENDENCIES += libhardware
 endif
 
 LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
@@ -352,7 +354,7 @@ else
     LOCAL_CFLAGS += -DTW_DEFAULT_LANGUAGE=en
 endif
 
-LOCAL_ADDITIONAL_DEPENDENCIES := \
+LOCAL_ADDITIONAL_DEPENDENCIES += \
     dump_image \
     erase_image \
     flash_image \
